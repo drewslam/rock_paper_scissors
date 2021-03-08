@@ -1,6 +1,9 @@
 let playerChoice;
 let computerChoice;
+let playerScore = 0;
+let computerScore = 0;
 
+// selecting your values
 
 function computerPlay() {
     let computerSelect = ['rock', 'paper', 'scissors'];
@@ -16,23 +19,44 @@ function playerSelection() {
 
 playerChoice = playerSelection();
 
+// playing the game
+
+let playerWin = `${playerChoice} beats ${computerChoice}! you win!`;
+let computerWin = `${computerChoice} beats ${playerChoice}! you lose!`;
+
 function playRound() {
-    if (playerChoice == 'scissors' && computerChoice == 'paper') {
-        return `${playerChoice} beats ${computerChoice}! you win!`;
-    } else if (playerChoice == 'rock' && computerChoice == 'scissors') {
-        return `${playerChoice} beats ${computerChoice}! you win!`;
-    } else if (playerChoice == 'paper' && computerChoice == 'rock') {
-        return `${playerChoice} beats ${computerChoice}! you win!`;
-    } else if (playerChoice == 'rock' && computerChoice == 'paper') {
-        return `${computerChoice} beats ${playerChoice}! you lose!`;
-    } else if (playerChoice == 'paper' && computerChoice == 'scissors') {
-        return `${computerChoice} beats ${playerChoice}! you lose!`;
-    } else if (playerChoice == 'scissors' && computerChoice == 'rock') {
-        return `${computerChoice} beats ${playerChoice}! you lose!`;
-    } else if (playerChoice == computerChoice){
+    if (playerChoice === 'scissors' && computerChoice === 'paper') {
+        return playerWin;
+    } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
+        return playerWin;
+    } else if (playerChoice === 'paper' && computerChoice === 'rock') {
+        return playerWin;
+    } else if (playerChoice === 'rock' && computerChoice === 'paper') {
+        return computerWin;
+    } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
+        return computerWin;
+    } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
+        return computerWin;
+    } else if (playerChoice === computerChoice) {
         return 'tie game!';
     } else {
         return 'error! try again!';
     }
 }
 
+let result = playRound()
+
+// determining the winner
+
+function game() {
+    console.log(result);
+    if (result === computerWin) {
+        computerScore++;
+    } else if (result === playerWin) {
+        playerScore++;
+    }
+}
+
+console.log(game());
+console.log(`Player ${playerScore}`);
+console.log(`Computer ${computerScore}`);
