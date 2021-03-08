@@ -35,6 +35,4 @@ function playRound() {
         return 'error! try again!';
     }
 }
-// console.log(playerSelection());
-// console.log(computerPlay());
-console.log(playRound());
+
