@@ -1,1 +1,1 @@
-# rock_paper_scissors
+Doing the Rock, Paper, Scissors game on The Odin Project.
