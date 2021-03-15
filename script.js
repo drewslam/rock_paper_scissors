@@ -21,21 +21,23 @@ playerChoice = playerSelection();
 
 // playing the game
 
-let playerWin = `${playerChoice} beats ${computerChoice}! you win!`;
-let computerWin = `${computerChoice} beats ${playerChoice}! you lose!`;
+let playerWin;
+let computerWin;
 
 function playRound(playerChoice, computerChoice) {
-    if  (
+    if (
         (playerChoice === 'scissors' && computerChoice === 'paper') ||
         (playerChoice === 'rock' && computerChoice === 'scissors') ||
         (playerChoice === 'paper' && computerChoice === 'rock')
-        )   {
+    ) {
+        playerWin = `${playerChoice} beats ${computerChoice}! you win!`;
         return playerWin;
     } else if (
-              (playerChoice === 'rock' && computerChoice === 'paper') ||
-              (playerChoice === 'paper' && computerChoice === 'scissors') ||
-              (playerChoice === 'scissors' && computerChoice === 'rock')
-              ) {
+        (playerChoice === 'rock' && computerChoice === 'paper') ||
+        (playerChoice === 'paper' && computerChoice === 'scissors') ||
+        (playerChoice === 'scissors' && computerChoice === 'rock')
+    ) {
+        computerWin = `${computerChoice} beats ${playerChoice}! you lose!`;
         return computerWin;
     } else if (playerChoice === computerChoice) {
         return 'tie game!';
@@ -44,7 +46,7 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-let result = playRound(playerChoice, computerChoice)
+let result = playRound(playerChoice, computerChoice);
 
 // determining the winner
 
@@ -59,13 +61,37 @@ function game() {
     }
 }
 
-game();
+game(playerChoice, computerChoice);
 console.log(playerChoice);
 console.log(computerChoice);
 console.log(`Player ${playerScore}`);
 console.log(`Computer ${computerScore}`);
-computerChoice = computerPlay();
 playerChoice = playerSelection();
+computerChoice = computerPlay();
+result = playRound(playerChoice, computerChoice);
+game(result);
+console.log(playerChoice);
+console.log(computerChoice);
+console.log(`Player ${playerScore}`);
+console.log(`Computer ${computerScore}`);
+playerChoice = playerSelection();
+computerChoice = computerPlay();
+result = playRound(playerChoice, computerChoice);
+game(result);
+console.log(playerChoice);
+console.log(computerChoice);
+console.log(`Player ${playerScore}`);
+console.log(`Computer ${computerScore}`);
+playerChoice = playerSelection();
+computerChoice = computerPlay();
+result = playRound(playerChoice, computerChoice);
+game(result);
+console.log(playerChoice);
+console.log(computerChoice);
+console.log(`Player ${playerScore}`);
+console.log(`Computer ${computerScore}`);
+playerChoice = playerSelection();
+computerChoice = computerPlay();
 result = playRound(playerChoice, computerChoice);
 game(result);
 console.log(playerChoice);
