@@ -98,3 +98,13 @@ console.log(playerChoice);
 console.log(computerChoice);
 console.log(`Player ${playerScore}`);
 console.log(`Computer ${computerScore}`);
+
+function endGame() {
+    if (computerScore > playerScore) {
+    return 'Computer Wins! Play Again';
+} else if (playerScore > computerScore) {
+    return 'Player Wins! Play Again';
+} else return 'Tie Game! Play Again';
+}
+
+console.log(endGame());
