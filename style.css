@@ -10,10 +10,6 @@ body {
     text-align: center;
 }
 
-h2 {
-    font-size: 1rem;
-}
-
 button {
     font-size: .75rem;
 }
@@ -45,28 +41,28 @@ h1 {
 
 .score-board #player-score {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 1;
     text-align: center;
     font-size: 1rem;
 }
 
 .score-board #computer-score {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 1;
     text-align: center;
     font-size: 1rem;
 }
 
-.score-board h2 {
-    font-size: 1rem;
+.score-board h3 {
+    font-size: .7rem;
     grid-column: 1 / span 2;
-    grid-row: 1;
+    grid-row: 2;
 }
 
 .score-board p {
     font-size: .75rem;
     grid-column: 1 / span 2;
-    grid-row: 2;
+    grid-row: 3;
 }
 
 .selections {
