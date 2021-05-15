@@ -90,14 +90,6 @@ function game(e) {
     }
 }
 
-/*
-    When I retrieve buttons using querySelectorAll and class,
-    I trigger double clicks, but I don't trigger reset.
-
-    When I use getElementsByTagName and button element, I don't
-    trigger double clicks, but reset triggers computerSelect().
-*/
-
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', game)
 }
