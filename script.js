@@ -19,7 +19,7 @@ const playerScoreBoard = document.querySelector('.score-board').firstElementChil
 const message = document.createElement('h3');
 const subMessage = document.createElement('p');
 const computerScoreBoard = document.querySelector('.score-board').lastElementChild;
-const buttons = document.querySelectorAll('.selections');
+const buttons = document.getElementsByTagName('button');
 const resetButton = document.querySelector('.reset');
 
 function computerSelect() {
@@ -30,14 +30,16 @@ function computerSelect() {
 
 function disableButtons() {
     for (let i = 0; i < buttons.length; i++) {
-    buttons[i].disabled = true;
-}
+        buttons[i].disabled = true;
+        resetButton.disabled = false;
+    }
 }
 
 function enableButtons() {
     for (let i = 0; i < buttons.length; i++) {
-    buttons[i].disabled = false;
-}
+        buttons[i].disabled = false;
+        resetButton.disabled = true;
+    }
 }
 
 function reset(e) {
@@ -45,8 +47,8 @@ function reset(e) {
     computerScore = 0;
     playerScoreBoard.textContent = `Player: ${playerScore}`;
     computerScoreBoard.textContent = `Computer: ${computerScore}`;
-    message.style.display = 'none';
-    subMessage.style.display = 'none';
+    message.textContent = '';
+    subMessage.textContent = '';
     enableButtons();
     resetButton.style.display = 'none';
 }
@@ -54,8 +56,12 @@ function reset(e) {
 function game(e) {
     const playerSelection = e.target.id;
     const computerSelection = computerSelect();
+    if (playerSelection === '') {
+        return;
+    }
     scoreBoard.appendChild(message);
     scoreBoard.appendChild(subMessage);
+
     if (playerSelection === computerSelection) {
         message.textContent = `Player choise ${playerSelection}, Computer chose ${computerSelection}, Draw`;
     } else if ((playerSelection === 'rock' && computerSelection === 'paper') ||
@@ -72,18 +78,25 @@ function game(e) {
 
     if (playerScore < 5 && computerScore < 5) {
         subMessage.textContent = 'Keep Playing';
+        enableButtons();
     } else if (computerScore === 5 && playerScore < 5) {
         subMessage.textContent = 'Game Over. Computer Wins.';
-        disableButtons();
         resetButton.style.display = 'inline-block';
-        resetButton.disabled = false;
+        disableButtons();
     } else if (playerScore === 5 && computerScore < 5) {
         subMessage.textContent = 'Game Over. You Win.';
-        disableButtons();
         resetButton.style.display = 'inline-block';
-        resetButton.disabled = false;
+        disableButtons();
     }
 }
+
+/*
+    When I retrieve buttons using querySelectorAll and class,
+    I trigger double clicks, but I don't trigger reset.
+
+    When I use getElementsByTagName and button element, I don't
+    trigger double clicks, but reset triggers computerSelect().
+*/
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', game)
