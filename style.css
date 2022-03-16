@@ -14,8 +14,12 @@ button {
     font-size: .75rem;
 }
 
-.reset {
+#reset {
     display: none;
+    height: 2.5em;
+    width: 7.5em;
+    border-radius: 0%;
+    
 }
 
 button:hover {
@@ -65,9 +69,17 @@ h1 {
     grid-row: 3;
 }
 
-.selections {
+#selections {
     display: flex;
+    align-items: center;
+    align-content: center;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 1rem;
+    margin: auto;
+
+}
+
+.selections {
+    height: 5em;
+    width: 5em;
 }
